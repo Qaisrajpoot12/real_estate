@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2024 at 03:19 PM
+-- Generation Time: Mar 01, 2024 at 06:00 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,22 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `real_estate`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -57,10 +41,13 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `path`, `imageable_id`, `imageable_type`, `created_at`, `updated_at`) VALUES
-(2, '1709302536.png', '1', 'App\\Models\\User', '2024-03-01 09:15:37', '2024-03-01 09:15:37'),
-(3, '1709302604.png', '1', 'App\\Models\\Listing', '2024-03-01 09:16:44', '2024-03-01 09:16:44'),
-(4, '1709302604.png', '1', 'App\\Models\\Listing', '2024-03-01 09:16:44', '2024-03-01 09:16:44'),
-(5, '1709302627.png', '1', 'App\\Models\\Listing', '2024-03-01 09:17:08', '2024-03-01 09:17:08');
+(1, '1709312116.png', '1', 'App\\Models\\User', '2024-03-01 11:55:16', '2024-03-01 11:55:16'),
+(2, '1709312190_65e208be6b72c.png', '1', 'App\\Models\\Listing', '2024-03-01 11:56:30', '2024-03-01 11:56:30'),
+(3, '1709312190_65e208be6bb83.png', '1', 'App\\Models\\Listing', '2024-03-01 11:56:30', '2024-03-01 11:56:30'),
+(4, '1709312246_65e208f64a453.png', '1', 'App\\Models\\Listing', '2024-03-01 11:57:26', '2024-03-01 11:57:26'),
+(5, '1709312344_65e2095841ca3.png', '2', 'App\\Models\\Listing', '2024-03-01 11:59:04', '2024-03-01 11:59:04'),
+(6, '1709312344_65e2095841d4b.png', '2', 'App\\Models\\Listing', '2024-03-01 11:59:04', '2024-03-01 11:59:04'),
+(7, '1709312344_65e2095841d9a.png', '2', 'App\\Models\\Listing', '2024-03-01 11:59:04', '2024-03-01 11:59:04');
 
 -- --------------------------------------------------------
 
@@ -99,10 +86,11 @@ CREATE TABLE `logs` (
 --
 
 INSERT INTO `logs` (`id`, `user_id`, `action`, `loggable_id`, `loggable_type`, `created_at`, `updated_at`) VALUES
-(1, 1, 'create', '1', 'App\\Models\\User', '2024-03-01 09:16:44', '2024-03-01 09:16:44'),
-(2, 1, 'update', '1', 'App\\Models\\User', '2024-03-01 09:16:54', '2024-03-01 09:16:54'),
-(3, 1, 'update', '1', 'App\\Models\\User', '2024-03-01 09:17:08', '2024-03-01 09:17:08'),
-(4, 1, 'delete', '1', 'App\\Models\\User', '2024-03-01 09:17:58', '2024-03-01 09:17:58');
+(1, 1, 'create', '1', 'App\\Models\\User', '2024-03-01 11:56:30', '2024-03-01 11:56:30'),
+(2, 1, 'update', '1', 'App\\Models\\User', '2024-03-01 11:57:26', '2024-03-01 11:57:26'),
+(3, 1, 'delete', '1', 'App\\Models\\User', '2024-03-01 11:57:36', '2024-03-01 11:57:36'),
+(4, 1, 'create', '1', 'App\\Models\\User', '2024-03-01 11:59:04', '2024-03-01 11:59:04'),
+(5, 1, 'delete', '1', 'App\\Models\\User', '2024-03-01 11:59:13', '2024-03-01 11:59:13');
 
 -- --------------------------------------------------------
 
@@ -121,25 +109,11 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(27, '2014_10_12_000000_create_users_table', 1),
-(28, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(29, '2019_08_19_000000_create_failed_jobs_table', 1),
-(30, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(31, '2024_02_28_120757_create_listings_table', 1),
-(32, '2024_02_28_120802_create_images_table', 1),
-(33, '2024_02_28_120817_create_logs_table', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_reset_tokens`
---
-
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(34, '2014_10_12_000000_create_users_table', 1),
+(35, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(36, '2024_02_28_120757_create_listings_table', 1),
+(37, '2024_02_28_120802_create_images_table', 1),
+(38, '2024_02_28_120817_create_logs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +139,7 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\User', 1, 'authToken', '7f37b5602bb64a1e41602a7686303a786dde9ada9592c1dae6a809b7fa271b0f', '[\"*\"]', '2024-03-01 09:18:10', NULL, '2024-03-01 09:14:56', '2024-03-01 09:18:10');
+(1, 'App\\Models\\User', 1, 'authToken', '34a47b0e088203d776ad6f2ab46edaccde7316f9ebf3d326ff29aaa7932a4888', '[\"*\"]', '2024-03-01 11:59:18', NULL, '2024-03-01 11:54:47', '2024-03-01 11:59:18');
 
 -- --------------------------------------------------------
 
@@ -188,18 +162,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
-(1, 'Qais rajpoot', 'test@gmail.com', '$2y$12$cQsRaoCl6A3z6ub/ycFWNeMV7iPxrEq.f9oqQLHLTXXhBHOUgcZV2', 'agent', '2024-03-01 09:14:52', '2024-03-01 09:15:57');
+(1, 'testuser', 'test@gmail.com', '$2y$12$M.avJ869xsKI.eyIFXrnveLz1p.ZYYxRmaEHHLm8cm.m3TgOCCIpC', 'agent', '2024-03-01 11:54:39', '2024-03-01 11:55:51');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
 -- Indexes for table `images`
@@ -228,12 +195,6 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_reset_tokens`
---
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
-
---
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -253,34 +214,28 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
