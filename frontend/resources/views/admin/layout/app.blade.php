@@ -76,20 +76,15 @@
         $(document).ready(function() {
 
             let ids = [];
+            let removed_files = [];
             $('.filechange').on('change', function() {
 
                     var input = this;
-
 
                     if (!ids.includes($(input).attr('id'))) {
                         // If not, add it to the ids array
                         ids.push($(input).attr('id'));
                     }
-
-                    // let idsString = ids.toString();
-                    // console.log(idsString);
-
-
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
@@ -114,7 +109,16 @@
 
 
             })
+            // $('.delete_img').on('click', function() {
+            //     let img = $(this).parent().parent().find('.list-img').attr('src', '');
+            //     let file_id = $(this).parent().parent().parent().find('.filechange').attr('id');
 
+            //     if (!ids.includes(file_id)) {
+            //         // If not, add it to the ids array
+            //         ids.push(file_id);
+            //     }
+            //     console.log(ids);
+            // })
 
         });
     </script>

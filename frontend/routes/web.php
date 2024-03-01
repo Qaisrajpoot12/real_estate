@@ -47,6 +47,7 @@ Route::middleware(['checkAuth'])->group(function () {
     Route::post('/create-listing-submit', [ListsController::class, 'createlistingsubmit'])->name('createlistingsubmit');
     Route::post('/edit-list-submit/{id}', [ListsController::class, 'editListSubmit'])->name('editListSubmit');
     Route::get('/delete-list/{id}', [ListsController::class, 'delete'])->name('deletelist');
+    // Route::get('/delete-list/{id}/{img_id}', [ListsController::class, 'List_Img_delete'])->name('List_Img_delete');
     Route::get('/featured-listing', [ListsController::class, 'featured'])->name('featured');
     Route::get('/list/{id}', [ListsController::class, 'listdetail'])->name('listdetail');
     Route::get('/logs', [LogsController::class, 'getlogs'])->name('getlogs');

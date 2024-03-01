@@ -45,5 +45,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::post('/list/get', [ListController::class, 'get']);
+    Route::post('/list/img_delete', [ListController::class, 'img_delete']);
     Route::post('/logs', [LogsController::class, 'getLogs']);
 });

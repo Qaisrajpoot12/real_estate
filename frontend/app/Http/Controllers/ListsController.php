@@ -83,7 +83,7 @@ class ListsController extends Controller
 
                     $extenstion = $item->getClientOriginalExtension();
 
-                    $filename = time() . '.' . $extenstion;
+                    $filename = time() . '_' . uniqid() . '.' . $extenstion;
                     $item->move('uploads/listing_images', $filename);
 
                     $imagePath[] = $filename;
@@ -209,12 +209,86 @@ class ListsController extends Controller
 
                     $extenstion = $item->getClientOriginalExtension();
 
-                    $filename = time() . '.' . $extenstion;
+                    $filename = time() . '_' . uniqid() . '.' . $extenstion;
+
                     $item->move('uploads/listing_images', $filename);
 
                     $uploadedImages[] = $filename;
                 }
             }
+
+
+            // if (empty($request->hasFile('image'))) {
+            //     if (!empty($request->images_id)) {
+
+
+
+            //         $list = Http::withHeaders([
+            //             'Authorization' => 'Bearer ' . $token,
+            //         ])->post("$apiUrl/list/get", [
+            //             'id' => $id
+
+
+            //         ]);
+            //         $listData = $list->json();
+            //         // getting all paths of images to be deleted
+            //         if (!empty($listData['data'])) {
+            //             if (!empty($request->images_id)) {
+
+
+            //                 $listImages = $listData['data'][0]['images'] ?? [];
+
+            //                 $imagesIdParam = $request->images_id;
+
+
+            //                 $imageIdsToDelete = strpos($imagesIdParam, ',') !== false
+            //                     ? explode(',', $imagesIdParam)
+            //                     : [$imagesIdParam];
+
+
+
+
+            //                 $pathsToDelete = [];
+            //                 foreach ($listImages as $key) {
+            //                     if (in_array($key['id'], $imageIdsToDelete)) {
+
+
+
+            //                         if (file_exists('uploads/listing_images/' . $key['path'])) {
+            //                             // Delete the file
+            //                             unlink(public_path('uploads/listing_images/' . $key['path']));
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+
+            //         $listImages = $listData['data'][0]['images'] ?? [];
+
+            //         $imagesIdParam = $request->images_id;
+
+
+            //         $imageIdsToDelete = strpos($imagesIdParam, ',') !== false
+            //             ? explode(',', $imagesIdParam)
+            //             : [$imagesIdParam];
+
+
+
+
+            //         $pathsToDelete = [];
+            //         foreach ($listImages as $key) {
+            //             if (in_array($key['id'], $imageIdsToDelete)) {
+
+
+
+            //                 if (file_exists('uploads/listing_images/' . $key['path'])) {
+            //                     // Delete the file
+            //                     unlink(public_path('uploads/listing_images/' . $key['path']));
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
 
 
 
@@ -234,7 +308,7 @@ class ListsController extends Controller
 
             if ($response->successful()) {
 
-                return redirect()->route('home')->with('success', 'Created successfully');
+                return redirect()->route('home')->with('success', 'Updated successfully');
             } else {
                 return redirect()->back()->with('error', 'somthing went wrong');
             }
@@ -294,4 +368,36 @@ class ListsController extends Controller
             return redirect()->back()->with($responseData);
         }
     }
+
+    // public function List_Img_delete(Request $request, $id, $img_id)
+    // {
+    //     $apiUrl = env('API_URL');
+
+    //     $token = session()->get('access_token');
+
+    //     if (file_exists('uploads/listing_images/' . $key['path'])) {
+    //         // Delete the file
+    //         unlink(public_path('uploads/listing_images/' . $key['path']));
+    //     }
+
+
+
+    //     $response = Http::withHeaders([
+    //         'Authorization' => 'Bearer ' . $token,
+    //     ])->post("$apiUrl/list/img_delete", [
+    //         'id' => $id,
+    //         'img_id' => $img_id,
+
+    //     ]);
+
+
+
+    //     $responseData = $response->json();
+    //     if ($response->successful()) {
+
+    //         return redirect()->back()->with('success', 'Deleted successfully');
+    //     } else {
+    //         return redirect()->back()->with($responseData);
+    //     }
+    // }
 }

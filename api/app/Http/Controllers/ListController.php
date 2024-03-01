@@ -85,7 +85,7 @@ class ListController extends Controller
 
                     // $list->images()->whereIn('id', $request->images_id)->delete();
                     if (!empty($request->images_id)) {
-                        $imagesIdParam = empty($request->images_id);
+                        $imagesIdParam = $request->images_id;
 
                         // Determine if it's a single ID or multiple IDs
 
@@ -144,6 +144,25 @@ class ListController extends Controller
             $listingToDelete->delete();
 
             return response()->json(['message' => 'Successfully deleted']);
+        } else {
+            return response()->json(['error' => 'Failed to delete list']);
+        }
+    }
+
+    public function  img_delete(Request $request)
+    {
+
+        $user = $request->user();
+        $listImageToDelete = $user->listings()->find($request->id);
+
+
+        if ($listImageToDelete) {
+            $img = $listImageToDelete->images()->find($request->img_id);
+
+            if ($img) {
+                $img->delete();
+                return response()->json(['message' => 'Successfully deleted']);
+            }
         } else {
             return response()->json(['error' => 'Failed to delete list']);
         }

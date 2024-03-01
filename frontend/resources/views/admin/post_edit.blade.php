@@ -7,6 +7,15 @@
 @endsection
 
 @section('main_content')
+    {{-- <style>
+        .pre_imgs {
+            width: 200px;
+        }
+
+        .list-img {
+            width: 100%;
+        }
+    </style> --}}
     <div class="section-body">
         <div class="row">
             <div class="col-12">
@@ -50,22 +59,38 @@
                                         @if ($data['images'])
 
                                             @foreach ($data['images'] as $item)
-                                                <div>
+                                                <div class="row my-5">
 
 
-                                                    <label class="form-label">Photo *</label>
-                                                    <div>
-                                                        <input type="file" id="{{ $item['id'] }}" name="image[]"
-                                                            value="{{ $item['path'] }}" class="filechange">
+                                                    <div class="col-md-9">
 
 
+                                                        <label class="form-label">Photo </label>
+                                                        <div>
+                                                            <input type="file" id="{{ $item['id'] }}" name="image[]"
+                                                                value="{{ $item['path'] }}" class="filechange">
+
+
+                                                        </div>
+                                                        <div class="div d-flex mt-4">
+
+
+                                                            <div class="pre_img">
+                                                                <img class="list-img"
+                                                                    src="{{ asset('uploads/listing_images/' . $item['path']) }}"
+                                                                    alt="Image" name="path[]">
+                                                            </div>
+
+                                                            {{-- <div class="col-md-6">
+
+
+                                                                <button class="delete_img btn btn-danger" type="button">
+                                                                    Remove
+                                                                    Image</button>
+                                                            </div> --}}
+                                                        </div>
                                                     </div>
 
-                                                    <div>
-                                                        <img class="list-img"
-                                                            src="{{ asset('uploads/listing_images/' . $item['path']) }}"
-                                                            alt="Image" name="path[]">
-                                                    </div>
                                                 </div>
                                             @endforeach
                                         @endif
