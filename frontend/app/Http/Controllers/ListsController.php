@@ -70,8 +70,24 @@ class ListsController extends Controller
             $imagePath = [];
             if ($request->hasFile('image')) {
                 $image_arr =  $request->file('image');
+
+
+
+
+
+
+
+
                 foreach ($image_arr  as $item) {
-                    $imagePath[] = $item->store('listing_images', 'public');
+
+
+                    $extenstion = $item->getClientOriginalExtension();
+
+                    $filename = time() . '.' . $extenstion;
+                    $item->move('uploads/listing_images', $filename);
+
+                    $imagePath[] = $filename;
+                    // $imagePath[] = $item->store('listing_images', 'public');
                 }
             }
 
@@ -173,11 +189,12 @@ class ListsController extends Controller
                         $pathsToDelete = [];
                         foreach ($listImages as $key) {
                             if (in_array($key['id'], $imageIdsToDelete)) {
-                                // $pathsToDelete[] = $key['path'];
 
-                                if (Storage::disk('public')->exists($key['path'])) {
 
-                                    Storage::disk('public')->delete($key['path']);
+
+                                if (file_exists('uploads/listing_images/' . $key['path'])) {
+                                    // Delete the file
+                                    unlink(public_path('uploads/listing_images/' . $key['path']));
                                 }
                             }
                         }
@@ -185,12 +202,18 @@ class ListsController extends Controller
                 }
 
 
-                foreach ($request->file('image') as $imageFile) {
-                    $uploadedImages[] = $imageFile->store('listing_images', 'public');
+
+
+                foreach ($request->file('image')  as $item) {
+
+
+                    $extenstion = $item->getClientOriginalExtension();
+
+                    $filename = time() . '.' . $extenstion;
+                    $item->move('uploads/listing_images', $filename);
+
+                    $uploadedImages[] = $filename;
                 }
-
-
-                // Fetch existing images associated with the li
             }
 
 
@@ -235,14 +258,17 @@ class ListsController extends Controller
         ]);
         $listData = $list->json();
         // getting all paths of images to be deleted
+
+
         if (!empty($listData['data'])) {
             $listImages = $listData['data'][0]['images'] ?? [];
 
 
             foreach ($listImages as $key) {
-                if (Storage::disk('public')->exists($key['path'])) {
 
-                    Storage::disk('public')->delete($key['path']);
+                if (file_exists('uploads/listing_images/' . $key['path'])) {
+                    // Delete the file
+                    unlink(public_path('uploads/listing_images/' . $key['path']));
                 }
             }
         }

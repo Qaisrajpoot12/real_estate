@@ -62,7 +62,8 @@
                                                     </div>
 
                                                     <div>
-                                                        <img class="list-img" src="{{ asset('storage/' . $item['path']) }}"
+                                                        <img class="list-img"
+                                                            src="{{ asset('uploads/listing_images/' . $item['path']) }}"
                                                             alt="Image" name="path[]">
                                                     </div>
                                                 </div>
@@ -71,7 +72,6 @@
 
                                     </div>
                                     @if (count($data['images']) < 3)
-
                                         @for ($i = count($data['images']); $i < 3; $i++)
                                             <div class="mb-4">
                                                 <div>

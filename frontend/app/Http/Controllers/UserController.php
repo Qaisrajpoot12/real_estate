@@ -48,11 +48,28 @@ class UserController extends Controller
             if ($request->hasFile('image')) {
 
                 if ($userdata['user']['userdetail']) {
-                    Storage::disk('public')->delete($userdata['user']['userdetail']['profile_image']['path'] ?? '');
+                    // Storage::disk('public')->delete($userdata['user']['userdetail']['profile_image']['path'] ?? '');
+
+                    if (
+                        isset($userdata['user']['userdetail']['profile_image'])
+                        && isset($userdata['user']['userdetail']['profile_image']['path'])
+                        && file_exists('uploads/profile_images/' . $userdata['user']['userdetail']['profile_image']['path'])
+                    ) {
+                        // Delete the file
+                        unlink(public_path('uploads/profile_images/' . $userdata['user']['userdetail']['profile_image']['path']));
+                    }
                 }
 
+
                 $image_arr =  $request->file('image');
-                $imagePath[] = $image_arr->store('profile_image', 'public');
+                $extenstion = $image_arr->getClientOriginalExtension();
+
+                $filename = time() . '.' . $extenstion;
+                $image_arr->move('uploads/profile_images', $filename);
+
+                $imagePath[] = $filename;
+
+                // $imagePath[] = $image_arr->store('profile_image', 'public');
             }
 
 

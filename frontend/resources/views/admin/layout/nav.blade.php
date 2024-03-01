@@ -8,13 +8,11 @@
         </ul>
     </form>
     <ul class="navbar-nav navbar-right">
-        {{-- <li class="nav-link">
-            <a href="" target="_blank" class="btn btn-warning">Front End</a>
-        </li> --}}
+
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image"
-                    src="{{ asset('storage/' . (getUser()['user']['profileImage']['path'] ?? '') ?? '') }} "
+                    src="{{ asset('uploads/profile_images/' . (empty(getUser()['user']['profileImage']) ? '' : getUser()['user']['profileImage']['path'])) }}"
                     class="rounded-circle mr-1">
 
                 <div class="d-sm-none d-lg-inline-block">

@@ -145,7 +145,8 @@
                                 @if (isset($data[0]['images']))
                                     @foreach ($data[0]['images'] as $item)
                                         <div class="images col-md-4">
-                                            <img class="myImg img-fluid" src="{{ asset('storage/' . $item['path']) }}"
+                                            <img class="myImg img-fluid"
+                                                src="{{ asset('uploads/listing_images/' . $item['path']) }}"
                                                 alt="{{ $item['path'] }}">
                                         </div>
                                     @endforeach

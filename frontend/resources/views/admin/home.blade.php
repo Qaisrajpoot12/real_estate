@@ -69,7 +69,7 @@
 
                                                         @if ($row['images'])
                                                             <img class="list-img"
-                                                                src="{{ asset('storage/' . $row['images'][0]['path']) }}"
+                                                                src="{{ asset('uploads/listing_images/' . $row['images'][0]['path']) }}"
                                                                 alt="Image">
                                                         @endif
 

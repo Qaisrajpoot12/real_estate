@@ -29,4 +29,9 @@ class Listing extends Model
     {
         return $this->morphMany(Log::class, 'loggable');
     }
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\ListingFactory::new();
+    }
 }

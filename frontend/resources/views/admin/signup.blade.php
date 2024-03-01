@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/png" href="uploads/favicon.png">
 
-    <title>Real Estate | Register</title>
+    <title>Register</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 

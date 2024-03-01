@@ -38,7 +38,7 @@
 
                                         </div>
                                         <div class="col-md-4">
-                                            <img src="{{ asset('storage/' . ($user['profile_image']['path'] ?? '')) }}"
+                                            <img src="{{ asset('uploads/profile_images/' . ($user['profile_image']['path'] ?? '')) }}"
                                                 alt="profile-img" class="list-img profile-photo w_100_p">
                                         </div>
                                         <div class="col-md-9">
