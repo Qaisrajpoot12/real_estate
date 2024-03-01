@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/png" href="uploads/favicon.png">
 
-    <title>Admin Panel</title>
+    <title>Real Estate | Login</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -62,13 +62,13 @@
                                                 Login
                                             </button>
                                         </div>
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                             <div>
-                                                <a href="">
-                                                    Forget Password?
+                                                <a href="{{ route('register') }}">
+                                                    Register
                                                 </a>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </form>
                                 </div>
                             </div>

@@ -71,7 +71,7 @@
 
                                     </div>
                                     @if (count($data['images']) < 3)
-                                        {{ dd(count($data['images'])) }}
+
                                         @for ($i = count($data['images']); $i < 3; $i++)
                                             <div class="mb-4">
                                                 <div>
