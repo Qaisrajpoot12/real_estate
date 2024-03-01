@@ -1,0 +1,5 @@
+add db to api/.env
+
+add url of api project to frontend .env file  as API_URL=http://localhost/real_estate/api/public/api 
+
+that's it !!!!!!!!!!
