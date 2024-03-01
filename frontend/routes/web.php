@@ -17,12 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 
 Route::get('/login', [AuthContoller::class, 'login'])->name('login')->middleware('tokenverify');
+
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 Route::post('/login-submit', [AuthContoller::class, 'login_submit'])->name('login_submit');
 
 Route::get('/register', [AuthContoller::class, 'register'])->name('register');
@@ -37,7 +39,6 @@ Route::middleware(['checkAuth'])->group(function () {
 
     Route::get('/edit-profile', [UserController::class, 'editprofile'])->name('editprofile');
     Route::post('/changepassword', [UserController::class, 'changePassword'])->name('changePassword');
-
     Route::post('/edit-profile-submit', [UserController::class, 'editProfileSubmit'])->name('editProfileSubmit');
 
 
