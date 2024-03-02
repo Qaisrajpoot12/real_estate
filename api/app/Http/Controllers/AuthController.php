@@ -31,9 +31,9 @@ class AuthController extends Controller
 
                 // return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
 
-                return response()->json(['message' => 'Successfully registered']);
+                return response()->json(['message' => 'Successfully registered'], 201);
             } else {
-                return response()->json(['error' => 'Registration failed']);
+                return response()->json(['error' => 'Registration failed'], 422);
             }
         } catch (ValidationException $e) {
             return response()->json(['error' => $e->validator->errors()], 422);
@@ -63,7 +63,7 @@ class AuthController extends Controller
 
     public function res(Request $request)
     {
-        return response()->json(['error' => 'invalid login token']);
+        return response()->json(['error' => 'invalid login token'], 422);
     }
 
 
@@ -73,6 +73,6 @@ class AuthController extends Controller
 
         $request->user()->tokens()->delete();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Successfully logged out'], 200);
     }
 }

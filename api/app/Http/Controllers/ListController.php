@@ -43,9 +43,9 @@ class ListController extends Controller
             // }
 
             if ($list) {
-                return response()->json(['message' => 'Successfully created']);
+                return response()->json(['message' => 'Successfully created'], 201);
             } else {
-                return response()->json(['error' => 'failed to created post']);
+                return response()->json(['error' => 'failed to created post'], 422);
             }
         } catch (ValidationException $e) {
             return response()->json(['error' => $e->validator->errors()], 422);
@@ -106,9 +106,9 @@ class ListController extends Controller
 
 
 
-                return response()->json(['message' => 'Successfully updated']);
+                return response()->json(['message' => 'Successfully updated'], 200);
             } else {
-                return response()->json(['error' => 'failed to updated post']);
+                return response()->json(['error' => 'failed to updated post'], 422);
             }
         } catch (ValidationException $e) {
             return response()->json(['error' => $e->validator->errors()], 422);
@@ -129,7 +129,7 @@ class ListController extends Controller
 
             return response()->json(['message' => 'success', 'data' => $list]);
         } else {
-            return response()->json(['error' => 'Failed to get list']);
+            return response()->json(['error' => 'Failed to get list'], 422);
         }
     }
 
@@ -143,9 +143,9 @@ class ListController extends Controller
         if ($listingToDelete) {
             $listingToDelete->delete();
 
-            return response()->json(['message' => 'Successfully deleted']);
+            return response()->json(['message' => 'Successfully deleted'], 200);
         } else {
-            return response()->json(['error' => 'Failed to delete list']);
+            return response()->json(['error' => 'Failed to delete list'], 422);
         }
     }
 

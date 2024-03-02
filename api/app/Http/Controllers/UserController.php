@@ -46,12 +46,12 @@ class UserController extends Controller
                 }
 
                 $user->profileImage()->create(['path' => $request->path[0]]);
-                return response()->json(['message' => 'Profile updated successfully']);
+                return response()->json(['message' => 'Profile updated successfully'], 200);
             }
 
 
 
-            return response()->json(['message' => 'Profile updated successfully']);
+            return response()->json(['message' => 'Profile updated successfully'], 200);
         } catch (ValidationException $e) {
             return response()->json(['error' => $e->validator->errors()], 401);
         }
@@ -97,12 +97,12 @@ class UserController extends Controller
                     'password' => Hash::make($request->password),
                 ]);
 
-                return response()->json(['success' => 'Password updated successfully']);
+                return response()->json(['success' => 'Password updated successfully'], 200);
             } else {
-                return response()->json(['error' => 'Invalid old Password']);
+                return response()->json(['error' => 'Invalid old Password'], 422);
             }
         } catch (ValidationException $e) {
-            return response()->json(['error' => $e->validator->errors()]);
+            return response()->json(['error' => $e->validator->errors()], 422);
         }
     }
 }

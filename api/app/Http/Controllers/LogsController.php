@@ -13,6 +13,6 @@ class LogsController extends Controller
         // $user = User::find($request->user()->id);
         $user = User::with('logs')->find($request->user()->id);
         $logs = $user;
-        return response()->json(['data' => $logs]);
+        return response()->json(['data' => $logs], 200);
     }
 }
