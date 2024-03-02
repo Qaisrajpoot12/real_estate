@@ -53,7 +53,7 @@ class UserController extends Controller
 
             return response()->json(['message' => 'Profile updated successfully']);
         } catch (ValidationException $e) {
-            return response()->json(['error' => $e->validator->errors()]);
+            return response()->json(['error' => $e->validator->errors()], 401);
         }
     }
 
